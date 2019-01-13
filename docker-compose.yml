@@ -1,0 +1,33 @@
+version: "3"
+services:
+
+    ngnix:
+        image: nginx:latest
+        container_name: ngnix
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./projects/:/var/www/html/
+            - ./etc/nginx/conf.d/:/etc/nginx/conf.d/
+            
+    php-fpm:
+        build:
+            context: ./build/php-fpm
+        container_name: php-fpm
+        volumes:
+            - ./projects/:/var/www/html/
+            - ./etc/php/php.ini:/usr/local/etc/php/php.ini
+
+    mysql:
+        image: mysql:latest
+        container_name: mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: dev
+            MYSQL_PASSWORD: dev
+            MYSQL_DATABASE: dev
+        volumes:
+            - ./db/:/var/lib/mysql
+        ports:
+            - 3306:3306
