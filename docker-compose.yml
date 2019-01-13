@@ -17,7 +17,6 @@ services:
         container_name: php-fpm
         volumes:
             - ./projects/:/var/www/html/
-            - ./etc/php/php.ini:/usr/local/etc/php/php.ini
 
     mysql:
         image: mysql:latest
