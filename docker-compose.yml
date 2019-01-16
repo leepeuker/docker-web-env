@@ -1,15 +1,17 @@
-version: "3"
-services:
+version: "3.5"
 
+services:
     ngnix:
-        image: nginx:latest
-        container_name: ngnix
+        build: build/nginx/
+        container_name: nginx
         ports:
             - "80:80"
             - "443:443"
         volumes:
-            - ./projects/:/var/www/html/
             - ./etc/nginx/conf.d/:/etc/nginx/conf.d/
+            - ./projects/:/var/www/
+        networks:
+            - web
             
     php-fpm:
         build:
@@ -17,6 +19,8 @@ services:
         container_name: php-fpm
         volumes:
             - ./projects/:/var/www/html/
+        networks:
+            - web
 
     mysql:
         image: mysql:latest
@@ -30,3 +34,9 @@ services:
             - ./db/:/var/lib/mysql
         ports:
             - 3306:3306
+        networks:
+            - web
+    
+networks:
+    web:
+        name: web
