@@ -1,5 +1,5 @@
-# LAMP Docker environment
-This is a LAMP docker enviroment for handling one or multiple projects.
+# Docker environment for php web development 
+This is a docker enviroment for php web development and handling one or multiple projects.
 
 ##### Containers
 - nginx
