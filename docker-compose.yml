@@ -19,6 +19,8 @@ services:
             context: ./build/php-fpm
         container_name: php-fpm
         volumes:
+            - ./etc/php/php.ini:/usr/local/etc/php/php.ini
+            - ./etc/php/php-fpm.d/www.conf:/usr/local/etc/php/php-fpm.d/www.conf
             - ./projects/:/var/www/html/
         networks:
             - web
