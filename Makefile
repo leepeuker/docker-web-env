@@ -10,11 +10,11 @@ nginx_bash:
 nginx_log:
 	docker logs -f nginx
 
-start_env:
+up:
 	docker-compose up -d
 
-stop_env:
+down:
 	docker-compose down
 
-build_env:
+build: down
 	docker-compose build
