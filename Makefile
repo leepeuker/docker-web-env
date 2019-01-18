@@ -1,15 +1,3 @@
-php_bash:
-	docker exec -it php-fpm bash
-
-php_log:
-	docker logs -f php-fpm
-
-nginx_bash:
-	docker exec -it nginx bash
-
-nginx_log:
-	docker logs -f nginx
-
 up:
 	docker-compose up -d
 
@@ -18,3 +6,15 @@ down:
 
 build: down
 	docker-compose build
+
+bash_php:
+	docker exec -it php-fpm bash
+
+bash_nginx:
+	docker exec -it nginx bash
+
+log_php:
+	docker logs -f php-fpm
+
+log_nginx:
+	docker logs -f nginx
