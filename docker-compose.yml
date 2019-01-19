@@ -28,10 +28,10 @@ services:
         image: mysql:5.7
         container_name: mysql
         environment:
-            MYSQL_ROOT_PASSWORD: root
-            MYSQL_USER: dev
-            MYSQL_PASSWORD: dev
-            MYSQL_DATABASE: leepeuker
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
         volumes:
             - ./db/:/var/lib/mysql
         ports:
