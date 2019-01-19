@@ -18,3 +18,9 @@ log_php:
 
 log_nginx:
 	docker logs -f nginx
+
+db_import: 
+	docker exec -i db mysql -u root -proot -e "drop database if exists test-db"
+	docker exec -i db mysql -u root -proot -e "create database if not exists test-db"
+	docker cp dump.sql db:/tmp/dump.sql
+	docker exec -i db mysql -u root -proot test-db < dump.sql
