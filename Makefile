@@ -34,7 +34,6 @@ log_mysql:
 
 certbot_init:
 	docker exec -i nginx certbot register -m ${CERTBOT_EMAIL} --agree-tos --no-eff-email
-	docker exec -it nginx certbot --nginx
 
 certbot_create:
 	docker exec -it nginx certbot --nginx

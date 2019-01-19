@@ -38,6 +38,6 @@ For easier interacting with docker and the container.
 | log_php | Get php-fpm container log stream |
 | log_mysql | Get mysql container log stream |
 | log_nginx | Get nginx container log stream |
-| certbot_init | Initialize certbot and create first ssl certificate/s |
+| certbot_init | Initialize certbot |
 | certbot_create | Create ssl certificate/s |
 | certbot_renew | Renew existing ssl certificate/s |
