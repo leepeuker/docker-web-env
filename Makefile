@@ -1,3 +1,6 @@
+include .env
+export
+
 up:
 	docker-compose up -d
 
@@ -24,4 +27,8 @@ log_nginx:
 
 log_mysql:
 	docker logs -f mysql
-	
+
+certbot_init:
+	docker exec -i nginx apt-get install -y python-certbot-nginx -t stretch-backports
+	docker exec -i nginx certbot register -m ${CERTBOT_EMAIL} --agree-tos --no-eff-email
+	docker exec -it nginx certbot --nginx

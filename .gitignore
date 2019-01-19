@@ -1,3 +1,6 @@
+# Make config
+.env
+
 # Database files
 db/*
 !db/.gitkeep
