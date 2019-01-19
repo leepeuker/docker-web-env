@@ -30,6 +30,11 @@ log_mysql:
 	docker logs -f mysql
 
 certbot_init:
-	docker exec -i nginx apt-get install -y python-certbot-nginx -t stretch-backports
 	docker exec -i nginx certbot register -m ${CERTBOT_EMAIL} --agree-tos --no-eff-email
 	docker exec -it nginx certbot --nginx
+
+certbot_create:
+	docker exec -it nginx certbot --nginx
+	
+certbot_renew:
+	docker exec -i nginx certbot renew --pre-hook "service nginx stop" --post-hook "service nginx start"
