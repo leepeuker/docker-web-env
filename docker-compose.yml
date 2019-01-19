@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
     web:
-        build: build/nginx/
+        build: ./build/nginx/
         container_name: nginx
         ports:
             - "80:80"
@@ -15,8 +15,7 @@ services:
             - webdev
             
     php:
-        build:
-            context: ./build/php-fpm
+        build: ./build/php-fpm
         container_name: php-fpm
         volumes:
             - ./etc/php/php.ini:/usr/local/etc/php/php.ini
