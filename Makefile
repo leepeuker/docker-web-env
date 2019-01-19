@@ -1,11 +1,14 @@
 include .env
 export
 
-up:
+start:
 	mkdir -p db
 	docker-compose up -d
 
-down:
+stop:
+	docker-compose down
+
+restart:
 	docker-compose down
 
 build: down

@@ -28,8 +28,8 @@ For easier interacting with docker and the container.
 
 | Command | Description |
 | ------ | ------ |
-| up | Start containers |
-| down | Stop containers |
+| start | Start containers |
+| stop | Stop containers |
 | restart | Stop and start containers |
 | build | Rebuild images |
 | bash_php | Open bash to php-fpm container |
