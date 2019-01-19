@@ -2,8 +2,7 @@
 .env
 
 # Database files
-db/*
-!db/.gitkeep
+db/
 
 # Local configuration files
 etc/nginx/conf.d/*

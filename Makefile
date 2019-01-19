@@ -2,6 +2,7 @@ include .env
 export
 
 up:
+	mkdir -p db
 	docker-compose up -d
 
 down:
