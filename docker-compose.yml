@@ -1,7 +1,7 @@
 version: "3.5"
 
 services:
-    ngnix:
+    web:
         build: build/nginx/
         container_name: nginx
         ports:
@@ -12,9 +12,9 @@ services:
             - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./projects/:/var/www/
         networks:
-            - web
+            - webdev
             
-    php-fpm:
+    php:
         build:
             context: ./build/php-fpm
         container_name: php-fpm
@@ -23,9 +23,9 @@ services:
             - ./etc/php/php-fpm.d/www.conf:/usr/local/etc/php/php-fpm.d/www.conf
             - ./projects/:/var/www/
         networks:
-            - web
+            - webdev
 
-    mysql:
+    db:
         image: mysql:latest
         container_name: mysql
         environment:
@@ -38,8 +38,8 @@ services:
         ports:
             - 3306:3306
         networks:
-            - web
+            - webdev
     
 networks:
-    web:
-        name: web
+    webdev:
+        name: webdev
