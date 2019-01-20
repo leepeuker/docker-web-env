@@ -28,9 +28,9 @@ For easier interacting with docker and the container.
 
 | Command | Description |
 | ------ | ------ |
-| start | Start containers |
-| stop | Stop containers |
-| restart | Stop and start containers |
+| up | Create and start containers |
+| down | Stop and remove containers |
+| restart | Runs "down" and "up" command |
 | build | Rebuild images |
 | bash_php | Open bash to php-fpm container |
 | bash_mysql | Open bash to mysql container |
