@@ -1,5 +1,5 @@
 # Docker environment for php web development 
-This is a docker enviroment for php web development and handling one or multiple projects. Easy way for obtaining ssl certificates included. 
+This is a docker enviroment for php web development and handling one or multiple projects. Easy way for obtaining ssl certificates via [Let's Encrypt](https://letsencrypt.org/) included. 
 
 #### Containers
 - nginx [latest]
