@@ -21,10 +21,18 @@ Important first steps:
   - These and some other changes require you to restart the containers to activate the new configurations ("make restart")
   
 #### Directory structure
-Some of these directories do not exist yet, but they will be automatically created on first start of the containers
+Some of these directories and files do not exist yet, but will be automatically created on the containers first start
 - build/ - Build files for docker images
 - db/ - Database files for persistant storage
 - etc/ - Configuration files for programms and services
+  - letsencrypt/ - SSL certifcates, account informations, ...
+  - nginx/ - Nginx configuration files 
+    - conf.d/ - Server configuration file/s
+    - nginx.conf - Main configuration file
+    - .htpasswd - Optional basic http authentication file (must be created manually if needed)
+  - php/ - PHP configuration files 
+    - php-fpm.d/ - PHP-FPM pool configuration
+    - php.ini - Main configuration file
 - projects/ - Project/Website files
 
 #### Make commands
