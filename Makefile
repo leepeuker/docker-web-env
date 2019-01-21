@@ -8,8 +8,7 @@ up:
 down:
 	docker-compose down
 
-restart:
-	docker-compose down
+restart: down up
 
 build: down
 	docker-compose build
@@ -40,3 +39,7 @@ certbot_create:
 	
 certbot_renew:
 	docker exec -i nginx certbot renew --pre-hook "service nginx stop" --post-hook "service nginx start"
+
+mysql_import:
+	docker cp dump.sql mysql:/tmp/dump.sql
+	docker exec -it mysql mysql -u root -p${MYSQL_ROOT_PASSWORD} leepeuker < /tmp/dump.sql
