@@ -27,9 +27,9 @@ Some of these directories and files do not exist yet, but will be automatically 
 - etc/ - Configuration files for programms and services
   - letsencrypt/ - SSL certifcates, account informations, ...
   - nginx/ - Nginx configuration files 
+    - auth/ - Intended location for .htpasswd file (file must be created manually if needed)
     - conf.d/ - Server configuration file/s
     - nginx.conf - Main configuration file
-    - .htpasswd - Optional basic http authentication file (must be created manually if needed)
   - php/ - PHP configuration files 
     - php-fpm.d/ - PHP-FPM pool configuration
     - php.ini - Main configuration file
