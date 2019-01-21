@@ -5,6 +5,10 @@ server {
     root /var/www;
     index index.php;
 
+    # HTTP basic auth
+    auth_basic           "Secure area";
+    auth_basic_user_file /etc/nginx/auth/.htpasswd;
+
     if (!-e $request_filename) {
         rewrite ^.*$ /index.php last;
     }
