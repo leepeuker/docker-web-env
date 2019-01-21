@@ -18,7 +18,7 @@ $ make up
 Important first steps:
   - Change the default configuration in the .env file 
   - Edit etc/nginx/conf.d/default.conf (or remove it/add new .conf files) to customize your server/s
-  - These and some other changes require you to restart the containers to activate the new configurations ("make restart")
+  - These and some other changes may require you to restart the containers to activate the new configurations ("make restart")
   
 #### Directory structure
 Some of these directories and files do not exist yet, but will be automatically created on the containers first start
