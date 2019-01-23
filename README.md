@@ -12,6 +12,8 @@ This is a docker enviroment for php web development and handling one or multiple
 $ git clone https://github.com/leepeuker/docker-web-env.git
 $ cp .env.dist .env
 $ cp etc/nginx/conf.d/default.conf.dist etc/nginx/conf.d/default.conf
+$ cp etc/php/php.ini-dev etc/php/php.ini
+$ make build
 $ make up
 ```
 
