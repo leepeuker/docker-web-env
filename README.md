@@ -1,9 +1,9 @@
 # Docker environment for php web development 
-This is a docker enviroment for php web development and handling one or multiple websites.  Easy way for obtaining ssl certificates via [Let's Encrypt](https://letsencrypt.org/) and Xdbug included. 
+This is a docker enviroment for php web development and handling one or multiple websites.  Easy way for obtaining ssl certificates via [Let's Encrypt](https://letsencrypt.org/) included. 
 
 #### Containers
 - nginx [latest]
-- php-fpm [7.2]
+- php-fpm [7.2] (Xdebug included)
 - mysql [5.7]
 
 #### Installation and configuration
