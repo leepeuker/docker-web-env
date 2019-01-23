@@ -1,5 +1,5 @@
 # Docker environment for php web development 
-This is a docker enviroment for php web development and handling one or multiple websites. Easy way for obtaining ssl certificates via [Let's Encrypt](https://letsencrypt.org/) included. 
+This is a docker enviroment for php web development and handling one or multiple websites.  Easy way for obtaining ssl certificates via [Let's Encrypt](https://letsencrypt.org/) and Xdbug included. 
 
 #### Containers
 - nginx [latest]
@@ -47,7 +47,7 @@ For easier interacting with docker and the container.
 | up | Create and start containers |
 | down | Stop and remove containers |
 | restart | Runs "down" and "up" command |
-| build | Rebuild images |
+| build | Build docker images |
 | bash_php | Open bash to php-fpm container |
 | bash_mysql | Open bash to mysql container |
 | bash_nginx | Open bash to nginx container |
