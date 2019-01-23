@@ -33,8 +33,8 @@ Some of these directories and files do not exist yet, but will be automatically 
     - conf.d/ - Server configuration file/s
     - nginx.conf - Main configuration file
   - php/ - PHP configuration files 
-    - php-fpm.d/ - PHP-FPM pool configuration
-    - php.ini - Main configuration file
+    - php.ini-dev - Example dev configuration file
+    - php.ini-prod - Example prod configuration file
 - projects/ - Project/Website files
 
 #### Make commands
