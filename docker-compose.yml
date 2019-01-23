@@ -19,8 +19,8 @@ services:
     php:
         build: ./build/php-fpm
         container_name: php-fpm
-        ports:
-            - "${PORT_PHP}:9000"
+        environment:
+            XDEBUG_CONFIG: remote_host=${HOST_LOCAL_IP}
         volumes:
             - ./etc/php/php.ini:/usr/local/etc/php/php.ini
             - ./projects/:/var/www/
