@@ -1,5 +1,5 @@
 # Docker environment for php web development 
-This is a docker enviroment for php web development with XDebug support and handling one or multiple websites. Easy way for obtaining ssl certificates via [Let's Encrypt](https://letsencrypt.org/) included. 
+This is a docker enviroment for php web development with XDebug support and handling one or multiple websites. Easy way for obtaining SSL certificates via [Let's Encrypt](https://letsencrypt.org/) included. 
 
 #### Containers
 - nginx [latest]
