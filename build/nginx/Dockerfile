@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y \
     apache2-utils \
     nano
 
-RUN rm /etc/nginx/conf.d/default.conf
-RUN rm /var/log/nginx/*.log
+RUN rm /etc/nginx/conf.d/default.conf /var/log/nginx/*.log
+RUN touch /var/log/nginx/access.log /var/log/nginx/error.log 
 
 EXPOSE 80
 
