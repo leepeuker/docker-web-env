@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     nano
 
 RUN rm /etc/nginx/conf.d/default.conf
+RUN rm /var/log/nginx/*.log
 
 EXPOSE 80
 

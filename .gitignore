@@ -17,5 +17,8 @@ etc/php/*
 projects/*
 !projects/.gitkeep
 
+# Exported logs
+log/*
+
 # Other
 .idea
