@@ -3,6 +3,7 @@ export
 
 up:
 	mkdir -p db
+	mkdir -p log/nginx
 	docker-compose up -d
 
 down:
@@ -27,11 +28,6 @@ log_php:
 
 log_nginx:
 	docker logs -f nginx
-
-log_nginx_export:
-	mkdir -p ./log/nginx
-	docker cp nginx:/var/log/nginx/access.log ./log/nginx/access.log
-	docker cp nginx:/var/log/nginx/error.log ./log/nginx/error.log
 
 log_mysql:
 	docker logs -f mysql
