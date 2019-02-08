@@ -35,7 +35,6 @@ Some of these directories and files do not exist yet, but will be automatically 
   - php/ - PHP configuration files 
     - php.ini-dev - Example dev configuration file
     - php.ini-prod - Example prod configuration file
-- projects/ - Project/Website files
 
 #### Make commands
 For easier interacting with docker and the container.

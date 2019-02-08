@@ -13,10 +13,6 @@ etc/php/*
 !etc/php/php.ini-dev
 !etc/php/php.ini-prod
 
-# Project files
-projects/*
-!projects/.gitkeep
-
 # Exported logs
 log/*
 

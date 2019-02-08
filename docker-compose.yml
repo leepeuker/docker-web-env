@@ -3,34 +3,34 @@ version: "3.5"
 services:
     web:
         build: ./build/nginx/
-        container_name: nginx
+        container_name: ${NGINX_NAME}
         ports:
-            - "${PORT_NGINX}:80"
-            - "${PORT_NGINX_SSL}:443"
+            - "${NGINX_PORT}:80"
+            - "${NGINX_PORT_SSL}:443"
         volumes:
             - ./etc/nginx/conf.d/:/etc/nginx/conf.d/
             - ./etc/nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./etc/nginx/auth:/etc/nginx/auth/
             - ./etc/letsencrypt/:/etc/letsencrypt/
             - ./log/nginx:/var/log/nginx/
-            - ./projects/:/var/www/
+            - ${PROJECTS_DIR}:/var/www/
         networks:
             - webdev
             
     php:
         build: ./build/php-fpm
-        container_name: php-fpm
+        container_name: ${PHP_NAME}
         environment:
             XDEBUG_CONFIG: remote_host=${HOST_LOCAL_IP}
         volumes:
             - ./etc/php/php.ini:/usr/local/etc/php/php.ini
-            - ./projects/:/var/www/
+            - ${PROJECTS_DIR}:/var/www/
         networks:
             - webdev
 
     db:
         image: mysql:5.7
-        container_name: mysql
+        container_name: ${MYSQL_NAME}
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             MYSQL_USER: ${MYSQL_USER}
@@ -39,10 +39,10 @@ services:
         volumes:
             - ./db/:/var/lib/mysql
         ports:
-            - "${PORT_MYSQL}:3306"
+            - "${MYSQL_PORT}:3306"
         networks:
             - webdev
     
 networks:
     webdev:
-        name: webdev
+        name: ${NETWORK_NAME}
