@@ -9,7 +9,7 @@ up:
 down:
 	docker-compose down
 
-restart: down up
+reup: down up
 
 build: down
 	docker-compose build
