@@ -39,7 +39,7 @@ certbot_create:
 	docker exec -it ${NGINX_CONTAINER_NAME} certbot --nginx
 	
 certbot_renew:
-	docker exec -i ${NGINX_CONTAINER_NAME} certbot renew --pre-hook "service nginx stop" --post-hook "service nginx start"
+	docker exec -i ${NGINX_CONTAINER_NAME} certbot renew 
 
 mysql_import:
 	docker cp dump.sql mysql:/tmp/dump.sql
