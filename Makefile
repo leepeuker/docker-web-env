@@ -26,38 +26,38 @@ build: down
 # Container interaction
 #######################
 connect_php_bash:
-	docker exec -it  php-${ENV} bash
+	docker exec -it  php bash
 
 connect_nginx_bash:
-	docker exec -it nginx-${ENV} sh
+	docker exec -it nginx sh
 
 connect_mysql_cli:
-	docker exec -it mysql-${ENV} bash -c "mysql"
+	docker exec -it mysql bash -c "mysql"
 
 logs_php:
-	docker logs -f php-${ENV}
+	docker logs -f php
 
 logs_nginx:
-	docker logs -f nginx-${ENV}
+	docker logs -f nginx
 
 logs_mysql:
-	docker logs -f mysql-${ENV}
+	docker logs -f mysql
 
 
 # Certbot - Let's encrypt
 #########################
 certbot_init:
-	docker exec -i nginx-${ENV} certbot register -m ${CERTBOT_EMAIL} --agree-tos --no-eff-email
+	docker exec -i nginx certbot register -m ${CERTBOT_EMAIL} --agree-tos --no-eff-email
 
 certbot_create:
-	docker exec -it nginx-${ENV} certbot --nginx
+	docker exec -it nginx certbot --nginx
 	
 certbot_renew:
-	docker exec -i nginx-${ENV} certbot renew 
+	docker exec -i nginx certbot renew 
 
 
 # Database
 ##########
 mysql_import:
 	docker cp dump.sql mysql:/tmp/dump.sql
-	docker exec -it mysql-${ENV} mysql -u root -p${MYSQL_ROOT_PASSWORD} default < /tmp/dump.sql
+	docker exec -it mysql bash -c "mysql -u root -p${MYSQL_ROOT_PASSWORD} < /tmp/dump.sql"
