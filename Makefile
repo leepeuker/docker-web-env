@@ -1,6 +1,15 @@
 include .env
-export
 
+# Project management
+#####################
+init: build
+	cp etc/nginx/nginx.conf.dist etc/nginx/nginx.conf
+	cp etc/nginx/conf.d/default.conf.dist etc/nginx/conf.d/default.conf
+	cp etc/php/php.ini.${ENV}.dist etc/php/php.ini
+
+
+# Container management
+######################
 up:
 	mkdir -p db
 	mkdir -p log/nginx
@@ -14,33 +23,42 @@ reup: down up
 build: down
 	docker-compose build
 
-bash_php:
-	docker exec -it  ${PHP_CONTAINER_NAME} bash
 
-bash_nginx:
-	docker exec -it ${NGINX_CONTAINER_NAME} bash
+# Container interaction
+#######################
+connect_php_bash:
+	docker exec -it  php-${ENV} bash
 
-bash_mysql:
-	docker exec -it ${MYSQL_CONTAINER_NAME} bash
+connect_nginx_bash:
+	docker exec -it nginx-${ENV} sh
 
-log_php:
-	docker logs -f ${PHP_CONTAINER_NAME}
+connect_mysql_cli:
+	docker exec -it mysql-${ENV} bash -c "mysql"
 
-log_nginx:
-	docker logs -f ${NGINX_CONTAINER_NAME}
+logs_php:
+	docker logs -f php-${ENV}
 
-log_mysql:
-	docker logs -f ${MYSQL_CONTAINER_NAME}
+logs_nginx:
+	docker logs -f nginx-${ENV}
 
+logs_mysql:
+	docker logs -f mysql-${ENV}
+
+
+# Certbot - Let's encrypt
+#########################
 certbot_init:
-	docker exec -i ${NGINX_CONTAINER_NAME} certbot register -m ${CERTBOT_EMAIL} --agree-tos --no-eff-email
+	docker exec -i nginx-${ENV} certbot register -m ${CERTBOT_EMAIL} --agree-tos --no-eff-email
 
 certbot_create:
-	docker exec -it ${NGINX_CONTAINER_NAME} certbot --nginx
+	docker exec -it nginx-${ENV} certbot --nginx
 	
 certbot_renew:
-	docker exec -i ${NGINX_CONTAINER_NAME} certbot renew 
+	docker exec -i nginx-${ENV} certbot renew 
 
+
+# Database
+##########
 mysql_import:
 	docker cp dump.sql mysql:/tmp/dump.sql
-	docker exec -it ${MYSQL_CONTAINER_NAME} mysql -u root -p${MYSQL_ROOT_PASSWORD} leepeuker < /tmp/dump.sql
+	docker exec -it mysql-${ENV} mysql -u root -p${MYSQL_ROOT_PASSWORD} default < /tmp/dump.sql

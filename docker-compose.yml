@@ -3,7 +3,7 @@ version: "3.5"
 services:
     web:
         build: ./build/nginx/
-        container_name: ${NGINX_CONTAINER_NAME}
+        container_name: nginx-${ENV}
         ports:
             - "${NGINX_PORT}:80"
             - "${NGINX_PORT_SSL}:443"
@@ -15,22 +15,22 @@ services:
             - ./log/nginx:/var/log/nginx/
             - ${PROJECTS_DIR}:/var/www/
         networks:
-            - webdev
+            - webenv
             
     php:
         build: ./build/php-fpm
-        container_name: ${PHP_CONTAINER_NAME}
+        container_name: php-${ENV}
         environment:
             XDEBUG_CONFIG: remote_host=${HOST_LOCAL_IP}
         volumes:
             - ./etc/php/php.ini:/usr/local/etc/php/php.ini
             - ${PROJECTS_DIR}:/var/www/
         networks:
-            - webdev
+            - webenv
 
     db:
         image: mysql:5.7
-        container_name: ${MYSQL_CONTAINER_NAME}
+        container_name: mysql-${ENV}
         environment:
             MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
             MYSQL_USER: ${MYSQL_USER}
@@ -41,8 +41,8 @@ services:
         ports:
             - "${MYSQL_PORT}:3306"
         networks:
-            - webdev
+            - webenv
     
 networks:
-    webdev:
-        name: ${NETWORK_NAME}
+    webenv:
+        name: webenv-${ENV}
