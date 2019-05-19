@@ -11,10 +11,7 @@ This is a docker enviroment for php web development with XDebug support and hand
 ```sh
 $ git clone https://github.com/leepeuker/docker-web-env.git
 $ cp .env.dist .env
-$ cp etc/nginx/conf.d/default.conf.dist etc/nginx/conf.d/default.conf
-$ cp etc/php/php.ini-dev etc/php/php.ini
-$ make build
-$ make up
+$ make init
 ```
 
 Important first steps:
@@ -30,11 +27,11 @@ Some of these directories and files do not exist yet, but will be automatically 
   - letsencrypt/ - SSL certifcates, account informations, ...
   - nginx/ - Nginx configuration files 
     - auth/ - Intended location for .htpasswd file (file must be created manually if needed)
-    - conf.d/ - Server configuration file/s
-    - nginx.conf - Main configuration file
+    - conf.d/ - Host configuration file/s
+    - nginx.conf - Server configuration file
   - php/ - PHP configuration files 
-    - php.ini-dev - Example dev configuration file
-    - php.ini-prod - Example prod configuration file
+    - php.ini.dev.dist - Example dev configuration file
+    - php.ini.prod.dist - Example prod configuration file
 
 #### Make commands
 For easier interacting with docker and the container.
@@ -47,9 +44,9 @@ For easier interacting with docker and the container.
 | down | Stop and remove containers |
 | restart | Runs "down" and "up" command |
 | build | Build docker images |
-| bash_php | Open bash to php-fpm container |
-| bash_mysql | Open bash to mysql container |
-| bash_nginx | Open bash to nginx container |
+| connect_php_bash | Open bash to php-fpm container |
+| connect_nginx_bash | Open bash to nginx container |
+| connect_mysql_cli | Open mysql cli to mysql container |
 | log_php | Get php-fpm container log stream |
 | log_mysql | Get mysql container log stream |
 | log_nginx | Get nginx container log stream |

@@ -1,24 +1,35 @@
-FROM php:7.2-fpm
+FROM php:7.3.4-fpm-alpine
 
-RUN apt-get update && apt-get install -y \
-    && apt-get install -y libzip-dev libpng-dev zip \
-    && docker-php-ext-configure zip --with-libzip \
-    && docker-php-ext-install mysqli pdo_mysql mbstring zip gd \
-    && pecl install xdebug \
-    && docker-php-ext-enable xdebug mbstring gd \
-    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && rm -rf /tmp/pear/
+# system update
+RUN apk update && apk upgrade
 
-RUN { \
-    echo ''; \
-    echo 'xdebug.remote_enable=1'; \
-    echo 'xdebug.remote_port="9000"'; \
-} >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+# install system dependencies
+RUN apk add --no-cache git                  \
+                       bash                 \
+                       nano                 \
+                       curl                 \
+                       wget                 \
+                       unzip                \
+                       make                 \
+                       imagemagick          \
+                       imagemagick-libs     \
+                       imagemagick-dev      \
+                       zip                  \
+                       libzip-dev           \
+                       $PHPIZE_DEPS
 
-# Adding and using local user
-RUN useradd -m -s /bin/bash -u 1000 dev
-USER dev
 
-WORKDIR /var/www
+# install php dependencies
+RUN pecl install xdebug-beta            \
+                 imagick                \
+    &&                                  \
+    docker-php-ext-install mysqli       \
+                           pdo          \
+                           pdo_mysql    \
+                           zip          \
+    &&                                  \
+    docker-php-ext-enable xdebug        \
+                          imagick
 
-EXPOSE 9000
+# install composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
