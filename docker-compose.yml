@@ -20,12 +20,13 @@ services:
             - php
         networks:
             - webenv
-            
+
     php:
-        build: ./build/php-fpm
+        build: ./build/php
         container_name: php
         restart: always
         user: "${USER_ID}"
+        working_dir: /var/www/
         environment:
             XDEBUG_CONFIG: remote_host=${HOST_LOCAL_IP}
         volumes:

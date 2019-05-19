@@ -32,7 +32,7 @@ connect_nginx_bash:
 	docker exec -it nginx sh
 
 connect_mysql_cli:
-	docker exec -it mysql bash -c "mysql"
+	docker exec -it mysql bash -c "mysql -uroot -p${MYSQL_ROOT_PASSWORD}"
 
 logs_php:
 	docker logs -f php
