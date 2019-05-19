@@ -4,7 +4,6 @@ include .env
 #####################
 init: build
 	cp etc/nginx/nginx.conf.dist etc/nginx/nginx.conf
-	cp etc/nginx/conf.d/default.conf.dist etc/nginx/conf.d/default.conf
 	cp etc/php/php.ini.${ENV}.dist etc/php/php.ini
 
 
