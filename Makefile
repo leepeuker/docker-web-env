@@ -43,6 +43,9 @@ logs_nginx:
 logs_mysql:
 	docker logs -f mysql
 
+reload_nginx:
+	docker exec -it nginx bash -c "service nginx reload"
+
 
 # Certbot - Let's encrypt
 #########################
