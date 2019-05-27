@@ -20,7 +20,7 @@ down:
 reup: down up
 
 build: down
-	docker-compose build
+	docker-compose build --no-cache --build-arg USER_ID=${USER_ID}
 
 
 # Container interaction
@@ -64,3 +64,4 @@ certbot_renew:
 mysql_import:
 	docker cp dump.sql mysql:/tmp/dump.sql
 	docker exec -it mysql bash -c "mysql -u root -p${MYSQL_ROOT_PASSWORD} < /tmp/dump.sql"
+	
