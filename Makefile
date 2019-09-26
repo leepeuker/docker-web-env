@@ -61,7 +61,13 @@ certbot_renew:
 
 # Database
 ##########
-mysql_import:
+db_import:
 	docker cp dump.sql mysql:/tmp/dump.sql
 	docker exec -it mysql bash -c "mysql -u root -p${MYSQL_ROOT_PASSWORD} < /tmp/dump.sql"
+
+db_create:
+	docker exec -it mysql bash -c "mysql -u root -p${MYSQL_ROOT_PASSWORD} <<< 'CREATE DATABASE $(DB_NAME);'"
+
+db_drop:
+	docker exec -it mysql bash -c "mysql -u root -p${MYSQL_ROOT_PASSWORD} <<< 'DROP DATABASE $(DB_NAME);'"
 	
