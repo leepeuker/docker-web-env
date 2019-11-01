@@ -18,3 +18,5 @@ log/*
 
 # Other
 .idea
+tmp/*
+!*/.gitkeep

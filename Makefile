@@ -66,7 +66,7 @@ db_import:
 	docker exec -it mysql bash -c "mysql -u root -p${MYSQL_ROOT_PASSWORD} < /tmp/dump.sql"
 
 db_export:
-	docker exec -it mysql bash -c "mysql -u root -p${MYSQL_ROOT_PASSWORD} ${DB_NAME} > /tmp/dump.sql"
+	docker exec -it mysql bash -c "mysqldump --databases --add-drop-database -u root -p${MYSQL_ROOT_PASSWORD} ${DB_NAME} > /tmp/dump.sql"
 	docker cp mysql:/tmp/dump.sql tmp/${DB_NAME}.sql 
 
 db_create:
